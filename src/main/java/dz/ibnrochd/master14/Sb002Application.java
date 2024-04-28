@@ -10,17 +10,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
+import dz.ibnrochd.master14.business.ConsultationService;
+import dz.ibnrochd.master14.business.LigneConsultationService;
+import dz.ibnrochd.master14.business.PatientService;
+import dz.ibnrochd.master14.business.TraitementService;
 import dz.ibnrochd.master14.mapper .PatientMapper;
 import dz.ibnrochd.master14.mapper.TraitementMapper;
 import dz.ibnrochd.master14.model.Consultation;
 import dz.ibnrochd.master14.model.LigneConsultation;
 import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.Traitement;
-import dz.ibnrochd.master14.services.ConsultationService;
-import dz.ibnrochd.master14.services.LigneConsultationService;
-import dz.ibnrochd.master14.services.PatientService;
-import dz.ibnrochd.master14.services.TraitementService;
 
 @SpringBootApplication
 public class Sb002Application implements CommandLineRunner {
@@ -54,6 +53,7 @@ public class Sb002Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO : récupérer la liste de tous les patients puis afficher leurs noms
+		/*
 		List<Patient> patients = patientService.getAllPatients();
 		for (Patient patient : patients) {
 			System.out.println(patient.getNom());
@@ -105,7 +105,7 @@ public class Sb002Application implements CommandLineRunner {
 		    List<String> traitementsNoms = traitementService.rechercherTraitements(consultation.getId());
 		    traitementsNoms.forEach(System.out::println);
 
-	    
+	    */
 	} 
 }
 

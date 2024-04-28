@@ -1,4 +1,4 @@
-package dz.ibnrochd.master14.services;
+package dz.ibnrochd.master14.business;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,6 @@ public class LigneConsultationService {
     public LigneConsultation getLigneConsultationById(int id) {
         return ligneConsultationMapper.getLigneConsultationById(id);
     }
-    
-    
-    public List<LigneConsultation> getLignesConsultationByConsultationId(int consultationId) {
-        return ligneConsultationMapper.getLignesConsultationByConsultationId(consultationId);
-    }
-
     
     
     public void insertLigneConsultation(LigneConsultation ligneConsultation) {

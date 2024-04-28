@@ -15,18 +15,18 @@
 
   
     <!-- Requête pour récupérer tous les patients --> 
-    <select id="getAllPatients" resultMap="PatientResultMap">
+    <select id="obtenirTousLesPatients" resultMap="PatientResultMap">
     SELECT *
     FROM cabinet.patient;
 </select>
 
-<select id="getPatientByName" resultMap="PatientResultMap">
+<select id="obtenirPatientsParNom" resultMap="PatientResultMap">
 SELECT *
 FROM cabinet.patient
 WHERE nom = 'Yahi';
 </select>
 
-  <insert id="insertPatient" parameterType="dz.ibnrochd.master14.model.Patient">
+  <insert id="creerPatient" parameterType="dz.ibnrochd.master14.model.Patient">
         INSERT INTO cabinet.patient (nom, prenom, sexe, date_naissance, numero_telephone, adresse)
         VALUES (#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})
     </insert>

@@ -1,4 +1,4 @@
-package dz.ibnrochd.master14.services;
+package dz.ibnrochd.master14.business;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

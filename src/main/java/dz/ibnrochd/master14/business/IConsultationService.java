@@ -1,15 +1,11 @@
-package dz.ibnrochd.master14.mapper;
+package dz.ibnrochd.master14.business;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-
 import dz.ibnrochd.master14.model.Consultation;
-@Mapper
-public interface ConsultationMapper {
+
+public interface IConsultationService {
     List<Consultation> obtenirToutesLesConsultations();
     Consultation obtenirConsultationParId(int id);
-    
     void creerConsultation(Consultation consultation);
     void mettreAJourConsultation(Consultation consultation);
     void supprimerConsultation(int id);

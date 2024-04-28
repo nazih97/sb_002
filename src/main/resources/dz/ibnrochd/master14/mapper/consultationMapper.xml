@@ -8,31 +8,26 @@
         <!-- Ajoutez d'autres propriétés ici -->
     </resultMap>
 
-    <select id="getAllConsultations" resultMap="ConsultationResultMap">
+    <select id="obtenirToutesLesConsultations" resultMap="ConsultationResultMap">
         SELECT * FROM consultation
     </select>
 
-    <select id="getConsultationById" resultMap="ConsultationResultMap"  parameterType="int">
+    <select id="obtenirConsultationParId" resultMap="ConsultationResultMap"  parameterType="int">
             SELECT *
     FROM cabinet.consultation
     WHERE id = #{id}
     </select>
     
     
-
-
-    
-    
-
-    <insert id="insertConsultation">
+    <insert id="creerConsultation">
         INSERT INTO consultation (dateConsultation) VALUES (#{dateConsultation})
     </insert>
 
-    <update id="updateConsultation">
+    <update id="mettreAJourConsultation">
         UPDATE consultation SET dateConsultation = #{dateConsultation} WHERE id = #{id}
     </update>
 
-    <delete id="deleteConsultation">
+    <delete id="supprimerConsultation">
         DELETE FROM consultation WHERE id = #{id}
     </delete>
     

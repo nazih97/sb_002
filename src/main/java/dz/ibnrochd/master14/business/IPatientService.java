@@ -1,14 +1,9 @@
-package dz.ibnrochd.master14.mapper;
+package dz.ibnrochd.master14.business;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-
 import dz.ibnrochd.master14.model.Patient;
 
-
-@Mapper
-public interface PatientMapper {
+public interface IPatientService {
     List<Patient> obtenirTousLesPatients();
     Patient obtenirPatientParId(int id);
     List<Patient> obtenirPatientsParNom(String nom);
