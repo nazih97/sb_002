@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "C:\spring\mybatis-3-mapper.dtd"> 
+<mapper namespace="dz.ibnrochd.master14.mapper.LigneConsultationMapper">
+    
+    <resultMap id="LigneConsultationResultMap" type="dz.ibnrochd.master14.model.LigneConsultation">
+        <id property="id" column="id" />
+        <result property="idConsultation" column="id_consultation" />
+        <result property="idTraitement" column="id_traitement" />
+        <result property="posologie" column="posologie" />
+        <result property="uniteTemps" column="unite_temps" />
+        <result property="quantite" column="quantite" />
+        <!-- Ajoutez d'autres propriétés ici -->
+    </resultMap>
+
+    
+    
+</mapper>
