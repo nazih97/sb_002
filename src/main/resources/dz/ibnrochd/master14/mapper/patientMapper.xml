@@ -31,9 +31,9 @@ WHERE nom = (#{nom});
         VALUES (#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})
     </insert>
     
-    
-  
-
-    
-    
+     <!-- Requête pour supprimer un patient par son ID -->
+<delete id="supprimerPatient">
+    DELETE FROM cabinet.patient
+    WHERE id = #{id}
+</delete>
 </mapper>

@@ -8,7 +8,10 @@
         <!-- Ajoutez d'autres propriétés ici -->
     </resultMap>
 
-
+    <select id="obtenirTousLesTraitements" resultMap="TraitementResultMap">
+    SELECT *
+    FROM cabinet.traitement;
+</select>
 
 
     

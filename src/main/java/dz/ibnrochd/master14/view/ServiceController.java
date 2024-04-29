@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -32,81 +34,47 @@ public class ServiceController {
     @Autowired
     private IConsultationService consultationService;
 
-    // obtenir tous les patients
-  /*  @GetMapping("/patients")
-    public List<Patient> obtenirTousLesPatients() {
-        return patientService.obtenirTousLesPatients();
-    }*/
-    // obtenir tous les patients
-    /*   @GetMapping("/patients")
-    public String listPatients(Model model) {
-        List<Patient> patients = patientService.obtenirTousLesPatients();
-        model.addAttribute("patients", patients);
-        return "liste-patients";
-    }*/
-    
-    
+
     // obtenir tous les patients
     @GetMapping("/patients")
-    public ResponseEntity<List<Patient>> obtenirTousLesPatients() {
+    public String  obtenirTousLesPatients(Model model) {
         List<Patient> patients = patientService.obtenirTousLesPatients();
-        return ResponseEntity.ok(patients);
-    }
-    
-
-    //  obtenir un patient par son ID
-    @GetMapping("/patients/{id}")
-    public ResponseEntity<Patient> obtenirPatientParId(@PathVariable("id") int id) {
-        Patient patient = patientService.obtenirPatientParId(id);
-        if (patient != null) {
-            return ResponseEntity.ok(patient);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    
-    //  obtenir un patient par son nom
-    @GetMapping("/patient/{nom}")
-    public ResponseEntity<List<Patient>> obtenirPatientsParNom(@PathVariable("nom") String nom) {
-        List<Patient> patients = patientService.obtenirPatientsParNom(nom);
-        if (!patients.isEmpty()) {
-            return ResponseEntity.ok(patients);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        model.addAttribute("patients",patients);
+        return "listePatients.html";
     }
 
-    // r créer un nouveau patient
-    @PostMapping("/patients")
-    public ResponseEntity<Void> creerPatient(@RequestBody Patient patient) {
+
+    // créer un nouveau patient
+    @PostMapping("/api/addpatient")
+    public ModelAndView creerPatient(@ModelAttribute("patient") Patient patient) {
+        // Ajoutez le patient à la base de données
         patientService.creerPatient(patient);
-        return ResponseEntity.ok().build();
+        
+        // Renvoyez la vue creerPatient.html
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("creerPatient");
+        return modelAndView;
     }
+    
+    
 
-    //  obtenir tous les traitements
     @GetMapping("/traitements")
-    public ResponseEntity<List<Traitement>> obtenirTousLesTraitements() {
+    public String  obtenirTousLesTraitements(Model model) {
         List<Traitement> traitements = traitementService.obtenirTousLesTraitements();
-        return ResponseEntity.ok(traitements);
+        model.addAttribute("traitements",traitements);
+        return "listeTraitements.html";
     }
+    
 
-    //  obtenir un traitement par son ID
-    @GetMapping("/traitements/{id}")
-    public ResponseEntity<Traitement> obtenirTraitementParId(@PathVariable("id") Traitement traitement) {
-        if (traitement != null) {
-            return ResponseEntity.ok(traitement);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+
+
+    // supprimet un patient
+    @DeleteMapping("/patient/delete/{id}")
+    public void supprimerPatient(@PathVariable int id) {
     }
-
-    //  créer un nouveau traitement
-    @PostMapping("/traitements")
-    public ResponseEntity<Void> creerTraitement(@RequestBody Traitement traitement) {
-        traitementService.creerTraitement(traitement);
-        return ResponseEntity.ok().build();
-    }
-
+    
+    
+    
 }
     
 
