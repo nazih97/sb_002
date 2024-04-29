@@ -23,7 +23,7 @@
 <select id="obtenirPatientsParNom" resultMap="PatientResultMap">
 SELECT *
 FROM cabinet.patient
-WHERE nom = 'Yahi';
+WHERE nom = (#{nom});
 </select>
 
   <insert id="creerPatient" parameterType="dz.ibnrochd.master14.model.Patient">
