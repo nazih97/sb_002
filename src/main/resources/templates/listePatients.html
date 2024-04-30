@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	 <meta charset="UTF-8">
+	<title>Liste des patients</title>
+</head>
+
+<body>
+	<h1>Liste des patients</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nom </th>
+				<th>Prenom </th>
+				<th>Date de naissance</th>
+				<th>sexe</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="patient : ${patients}">
+				<td th:text="${patient.id}"></td>
+				<td th:text="${patient.nom}"></td>
+				<td th:text="${patient.prenom}"></td>
+				<td th:text="${#dates.format(patient.dateNaissance, 'dd/MM/yyyy')}"></td>
+				<td th:text="${patient.sexe}">
+				 <td class="button-group">
+            <a class="edit-button" th:href="@{'/patient/update/' + ${patient.id}}" onclick="loadContent('@{/patient/update/}' )">Edit</a>
+<a class="delete-button" href="#" onclick="deletePatient('${patient.id}')">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+function deletePatient(id) {
+    if (confirm('Confirmer la suppression !')) {
+        fetch('/patient/delete/' + id, { method: 'DELETE' })
+            .then(function(response) {
+                if (response.ok) {
+                    // Rafraîchir la page après la suppression
+                    location.reload();
+                } else {
+                    alert('Erreur lors de la suppression du patient.');
+                }
+            });
+    }
+}
+</script>
+
+
+</body>
+
+</html>
+
+<script>
